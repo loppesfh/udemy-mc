@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.udemy.mc.domain.entity.Category;
-import com.udemy.mc.domain.service.CategoryService;
+import com.udemy.mc.domain.entity.Client;
+import com.udemy.mc.domain.service.ClientService;
 
 @RestController
-@RequestMapping(value = "/categories")
-public class CategoryControlle {
+@RequestMapping(value = "/clients")
+public class ClientController {
 	
 	@Autowired
-	private CategoryService service;
+	private ClientService service;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Category> findById(@PathVariable Long id) {		
-		 Category obj = service.findById(id);		 
+	public ResponseEntity<Client> findById(@PathVariable Long id) {		
+		 Client obj = service.findById(id);		 
 		 return ResponseEntity.ok().body(obj);		
 	}	
 
