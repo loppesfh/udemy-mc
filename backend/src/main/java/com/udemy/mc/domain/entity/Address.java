@@ -22,8 +22,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "city")
-public class City implements Serializable{
+@Table(name = "address")
+public class Address implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@EqualsAndHashCode.Include
@@ -31,11 +31,18 @@ public class City implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String name;
+	private String publicplace;
+	private String number;
+	private String complement;
+	private String neighborhood;
+	private String postcode;
 	
 	@ManyToOne
-	@JoinColumn(name = "state_id")
-	private State state;
-
+	@JoinColumn(name = "city_id")
+	private City city;
+	
+	@ManyToOne
+	@JoinColumn(name = "client_id")
+	private Client client;
 	
 }
