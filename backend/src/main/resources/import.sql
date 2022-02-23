@@ -55,3 +55,6 @@ insert into city(name, state_id) values('Imperatriz', 2);
 insert into address(publicplace, number, complement, neighborhood, postcode, city_id, client_id) values('Rua das Flores', '22', null, 'Alto da Boa Vista','62600000', 1, 1);
 insert into address(publicplace, number, complement, neighborhood, postcode, city_id, client_id) values('Av. Washighton Soares', '255', null, 'Centro', '62600000', 1, 2);
 insert into address(publicplace, number, complement, neighborhood, postcode, city_id, client_id) values('Rua São Francisco', '89', null, 'Cruzeiro', '62600000', 1, 3);
+
+
+ 

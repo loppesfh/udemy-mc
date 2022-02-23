@@ -32,6 +32,5 @@ public enum PaymentStatus {
 			}
 		}
 		throw new IllegalArgumentException("Id inválido: " + id);
-	}
-	
+	}	
 }

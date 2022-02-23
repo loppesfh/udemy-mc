@@ -3,38 +3,44 @@ package com.udemy.mc.domain.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.udemy.mc.domain.entity.enums.PaymentStatus;
 
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "payment")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Payment implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@EqualsAndHashCode.Include
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Integer PaymentStatus;
-
-	public Payment(Long id, Integer paymentStatus) {
-		super();
-		this.id = id;
-		PaymentStatus = paymentStatus;
-	}
+	private Integer paymentStatus;
 	
-	public Payment(Long id, PaymentStatus paymentStatus) {
+	@OneToOne
+	@JoinColumn(name = "order_id")
+	@MapsId
+	private Order order;
+
+	
+	public Payment(Long id, PaymentStatus paymentStatus, Order order) {
 		super();
 		this.id = id;
-		PaymentStatus = paymentStatus.getId();
+		this.paymentStatus = paymentStatus.getId();
+		this.order = order;
 	}
 
 	public Long getId() {
@@ -45,11 +51,12 @@ public abstract class Payment implements Serializable{
 		this.id = id;
 	}
 
-	public Integer getPaymentStatus() {
-		return PaymentStatus;
+	public PaymentStatus getPaymentStatus() {
+		return PaymentStatus.toEnum(paymentStatus);
+				
 	}
 
-	public void setPaymentStatus(Integer paymentStatus) {
-		PaymentStatus = paymentStatus;
+	public void setPaymentStatus(PaymentStatus paymentStatus) {
+		this.paymentStatus = paymentStatus.getId();
 	}	
 }

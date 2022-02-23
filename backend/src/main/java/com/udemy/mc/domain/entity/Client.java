@@ -53,6 +53,9 @@ public class Client implements Serializable{
 	@ElementCollection
 	@CollectionTable(name = "phone")
 	private Set<String> phones = new HashSet<>();
+	
+	@OneToMany(mappedBy = "client")
+	private Set<Order> orders = new HashSet<>();
 
 	public Client(Long id, String name, String email, String cpfCnpj, ClientType type) {
 		super();
@@ -118,5 +121,13 @@ public class Client implements Serializable{
 	public void setPhones(Set<String> phones) {
 		this.phones = phones;
 	}
+
+//	public Set<Order> getOrders() {
+//		return orders;
+//	}
+//
+//	public void setOrders(Set<Order> orders) {
+//		this.orders = orders;
+//	}
 	
 }
