@@ -53,8 +53,15 @@ insert into city(name, state_id) values('Tejucuoca', 1);
 insert into city(name, state_id) values('Imperatriz', 2);
 
 insert into address(publicplace, number, complement, neighborhood, postcode, city_id, client_id) values('Rua das Flores', '22', null, 'Alto da Boa Vista','62600000', 1, 1);
-insert into address(publicplace, number, complement, neighborhood, postcode, city_id, client_id) values('Av. Washighton Soares', '255', null, 'Centro', '62600000', 1, 2);
+insert into address(publicplace, number, complement, neighborhood, postcode, city_id, client_id) values('Av. Washighton Soares', '255', null, 'Centro', '62600000', 1, 1);
 insert into address(publicplace, number, complement, neighborhood, postcode, city_id, client_id) values('Rua São Francisco', '89', null, 'Cruzeiro', '62600000', 1, 3);
 
+insert into tb_order(date, client_id, delivery_address_id) values (TIMESTAMP WITH TIME ZONE '2020-07-13T20:50:07.12345Z', 1, 1);
+insert into tb_order(date, client_id, delivery_address_id) values (TIMESTAMP WITH TIME ZONE '2022-07-13T20:50:07.12345Z', 1, 2);
 
- 
+insert into payment(order_id, payment_status) values (1, 2);
+insert into payment(order_id, payment_status) values (2, 1);
+
+insert into payment_bill(due_date, pay_date, order_id) values(TIMESTAMP WITH TIME ZONE '2022-02-28T00:00:00.12345Z', null, 2);
+
+insert into payment_card(installments, order_id) values(6, 1);
