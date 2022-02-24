@@ -65,3 +65,7 @@ insert into payment(order_id, payment_status) values (2, 1);
 insert into payment_bill(due_date, pay_date, order_id) values(TIMESTAMP WITH TIME ZONE '2022-02-28T00:00:00.12345Z', null, 2);
 
 insert into payment_card(installments, order_id) values(6, 1);
+
+insert into order_item(order_id, product_id, quantity, price, discount) values(1, 1, 1, 2000.0, 0.0);
+insert into order_item(order_id, product_id, quantity, price, discount) values(1, 3, 2, 800.0, 0.0);
+insert into order_item(order_id, product_id, quantity, price, discount) values(2, 2, 3, 900.0, 100.0);

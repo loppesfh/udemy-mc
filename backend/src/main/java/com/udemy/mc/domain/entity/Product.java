@@ -1,7 +1,9 @@
 package com.udemy.mc.domain.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -11,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -45,5 +48,16 @@ public class Product implements Serializable{
 			joinColumns = @JoinColumn(name = "product_id"),
 			inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Category> categories = new HashSet<>();
+	
+	@OneToMany(mappedBy = "id.product")
+	private Set<OrderItem> items = new HashSet<>();	
+	
+	public List<Order> getOrders() {		
+		List<Order> list = new ArrayList<>();
+		for (OrderItem x: items) {
+			list.add(x.getId().getOrder());
+		}		
+		return list;		
+	}
 	
 }
