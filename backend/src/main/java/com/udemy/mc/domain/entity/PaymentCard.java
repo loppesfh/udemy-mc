@@ -1,10 +1,6 @@
 package com.udemy.mc.domain.entity;
 
-import java.time.Instant;
-
 import javax.persistence.Entity;
-
-import com.udemy.mc.domain.entity.enums.PaymentStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

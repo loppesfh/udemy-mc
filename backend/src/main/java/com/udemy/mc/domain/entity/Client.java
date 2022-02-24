@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.udemy.mc.domain.entity.enums.ClientType;
 
@@ -45,9 +46,8 @@ public class Client implements Serializable{
 	@Column(name = "cpf_cnpj")
 	private String cpfCnpj;
 	
-	private Integer type;
+	private Integer type;	
 	
-	@JsonManagedReference
 	@OneToMany(mappedBy = "client")
 	private List<Address> addresses = new ArrayList<>();
 	
@@ -55,7 +55,7 @@ public class Client implements Serializable{
 	@CollectionTable(name = "phone")
 	private Set<String> phones = new HashSet<>();
 	
-	@JsonBackReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private Set<Order> orders = new HashSet<>();
 

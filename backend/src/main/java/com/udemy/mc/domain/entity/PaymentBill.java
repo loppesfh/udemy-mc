@@ -5,9 +5,6 @@ import java.time.Instant;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.udemy.mc.domain.entity.enums.PaymentStatus;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
