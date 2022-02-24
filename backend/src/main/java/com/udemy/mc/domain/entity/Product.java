@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -49,13 +50,15 @@ public class Product implements Serializable{
 			inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Category> categories = new HashSet<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "id.product")
 	private Set<OrderItem> items = new HashSet<>();	
 	
+	@JsonIgnore
 	public List<Order> getOrders() {		
 		List<Order> list = new ArrayList<>();
 		for (OrderItem x: items) {
-			list.add(x.getId().getOrder());
+			list.add(x.getOrder());
 		}		
 		return list;		
 	}

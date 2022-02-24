@@ -6,7 +6,8 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ import lombok.Setter;
 public class OrderItem implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@JsonIgnore
 	@EqualsAndHashCode.Include
 	@EmbeddedId
 	private OrderItemPK id = new OrderItemPK();	
@@ -36,6 +38,14 @@ public class OrderItem implements Serializable{
 		this.discount = discount;
 		this.quantity = quantity;
 		this.price = price;
+	}	
+	
+	@JsonIgnore
+	public Order getOrder() {
+		return id.getOrder();
+	}	
+	
+	public Product getProduct() {
+		return id.getProduct();
 	}
-
 }

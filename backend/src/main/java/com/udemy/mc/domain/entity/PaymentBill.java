@@ -2,8 +2,10 @@ package com.udemy.mc.domain.entity;
 
 import java.time.Instant;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.udemy.mc.domain.entity.enums.PaymentStatus;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +21,12 @@ import lombok.Setter;
 public class PaymentBill extends Payment {
 	private static final long serialVersionUID = 1L;
 	
+//	@JsonFormat(pattern = "dd/MM/yyyy hh:mm")
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant dueDate;
+	
+//	@JsonFormat(pattern = "dd/MM/yyyy hh:mm")
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant payDate;
 
 //	public PaymentBill(Long id, Integer paymentStatus) {
